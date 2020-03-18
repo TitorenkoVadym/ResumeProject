@@ -2,7 +2,8 @@
 
 <div class="panel panel-primary">
 	<div class="panel-heading">
-		<h3 class="panel-title">Certificates</h3>
+		<h3 class="panel-title">
+			<i class="fa fa-certificate" aria-hidden="true"></i> Certificates</h3>
 	</div>
 	<div class="panel-body">Certificates</div>
 </div>
