@@ -1,15 +1,22 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%@ tag pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
+
+<%@attribute name="certificates" required="true" type="java.util.List" %>
 
 <div class="panel panel-primary certificates">
 	<div class="panel-heading">
 		<h3 class="panel-title">
-			<i class="fa fa-certificate"></i> Certificates <a class="edit-block" href="/edit/certificates">Edit</a>
+			<i class="fa fa-certificate"></i> Certificates
+			<a class="edit-block" href="/edit/certificates">Edit</a>
 		</h3>
 	</div>
 	<div class="panel-body">
-		<a data-url="/media/certificates/0e830e7d-6027-4717-9e02-6dd08da0e9c5.jpg" data-title="Jee certificate" href="#" class="thumbnail certificate-link">
-			<img alt="Jee certificate" src="/media/certificates/0e830e7d-6027-4717-9e02-6dd08da0e9c5-sm.jpg" class="img-responsive"> <span>Jee certificate</span>
+		<c:forEach var="certificate" items="${certificates }">
+		<a class="thumbnail certificate-link" href="#" data-title="${certificate.name }" data-url="${certificate.largeUrl }">
+			<img class="img-responsive" src="${certificate.smallUrl }" alt="${certificate.name }">
+			<span>${certificate.name }</span>
 		</a>
+		</c:forEach>
 	</div>
 </div>

@@ -1,5 +1,7 @@
 package com.vadim.resume.controller;
 
+import com.vadim.resume.entity.Profile;
+import com.vadim.resume.repository.storage.ProfileRepository;
 import com.vadim.resume.service.NameService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,12 +14,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class PublicDataController {
 
 	@Autowired
-	private NameService nameService;
+	private ProfileRepository profileRepository;
 
 	@RequestMapping(value="/{uid}", method=RequestMethod.GET)
 	public String getProfile(@PathVariable("uid") String uid, Model model){
-		String fullName = nameService.convertName(uid);
-		model.addAttribute("fullName", fullName);
+		Profile profile = profileRepository.findByUid(uid);
+		if (profile==null){
+			return "profile-not-found";
+		}
+		model.addAttribute("profile",profile);
 		return "profile";
 	}
 

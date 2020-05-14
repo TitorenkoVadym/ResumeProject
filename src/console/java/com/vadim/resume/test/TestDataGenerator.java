@@ -199,7 +199,7 @@ public class TestDataGenerator {
 	}
 
 	private static void insertPractics(Connection c, ProfileConfig profileConfig) throws SQLException {
-		PreparedStatement ps = c.prepareStatement("insert into practic values (nextval('practic_seq'),?,?,?,?,?,?,?,?)");
+		PreparedStatement ps = c.prepareStatement("insert into practice values (nextval('practic_seq'),?,?,?,?,?,?,?,?)");
 		boolean currentCourse = r.nextBoolean();
 		Date finish = addField(new Date(System.currentTimeMillis()), Calendar.MONTH, -(r.nextInt(3) + 1), false);
 		for (Course course : profileConfig.courses) {
